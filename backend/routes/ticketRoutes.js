@@ -5,9 +5,7 @@ const router = express.Router();
 
 router.post('/createTicket', createTicket);
 router.get('/getAllTickets', getAllTickets)
-// router.get('/:ticketID', getTicketById)
-router.route('/:ticketID')
-    .get(getTicketById)
-    .put(updateTicket)
+router.get('/:ticketID', getTicketById)
+router.put('/:ticketID', updateTicket)
 
 export default router;
