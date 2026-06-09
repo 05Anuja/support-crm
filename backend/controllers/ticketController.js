@@ -112,9 +112,10 @@ export const updateTicket = async (req, res) => {
       return res.status(400).json({
         message: "Invalid Status"
       })
+    }
+    if (status) {
       ticket.status = status
     }
-
     if (note) {
       ticket.notes.push({
         text: note
