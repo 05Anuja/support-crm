@@ -133,3 +133,25 @@ export const updateTicket = async (req, res) => {
     })
   }
 }
+
+export const deleteById = async (req, res) => {
+  try {
+    const ticket = await Ticket.findOneAndDelete({
+      ticketID: req.params.ticketID
+    });
+
+    if (!ticket) {
+      return res.status(404).json({
+        message: "Ticket Not Found!"
+      })
+    }
+    res.status(200).json({
+      success: true,
+      message: "Ticket Deleted Successfully!"
+  })
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    })
+  }
+}

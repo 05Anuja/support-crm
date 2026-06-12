@@ -8,3 +8,4 @@ export const createTicket = (data) => axios.post(`${API}/createTicket`, data);
 export const getTickets = (search = "", status = "") => axios.get(`${API}/getAllTickets?search=${search}&status=${status}`)
 export const getTicket = (id) => axios.get(`${API}/${id}`)
 export const updateTicket = (id, data) => axios.put(`${API}/${id}`, data) 
+export const deleteTicket = (id) => axios.delete(`${API}/${id}`)

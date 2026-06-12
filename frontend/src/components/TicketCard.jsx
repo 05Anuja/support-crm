@@ -20,9 +20,12 @@ const TicketCard = ({ticket}) => {
                 {ticket.subject}
             </p>
 
-            <p className='text-sm text-gray-500 mt-2'>
-                {new Date(ticket.createdAt).toLocaleDateString()}
-            </p>
+            <div>
+                <p className='text-sm text-gray-500 mt-2'>
+                    {new Date(ticket.createdAt).toLocaleDateString()}
+                </p>
+            </div>
+
         </div>      
     </Link>
   )

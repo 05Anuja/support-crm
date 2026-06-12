@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTicket, updateTicket } from "../services/ticketService";
+import { deleteTicket, getTicket, updateTicket } from "../services/ticketService";
 
 const TicketDetails = () => {
   const { ticketID } = useParams();
@@ -40,6 +40,18 @@ const TicketDetails = () => {
       console.log(error);
     }
   };
+
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this ticket?")
+    if (!confirmDelete) return;
+    try {
+      await deleteTicket(ticketID)
+      alert("Ticket Deleted Successfully!")
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   if (!ticket) {
     return (
@@ -207,13 +219,21 @@ const TicketDetails = () => {
               />
             </div>
 
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={handleUpdate}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
+              className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300"
             >
               Update Ticket
             </button>
 
+            <button
+                onClick={handleDelete}
+                className='w-full cursor-pointer bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition'
+                >
+                    Delete
+            </button>
+          </div>
           </div>
         </div>
 
