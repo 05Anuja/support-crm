@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const TicketCard = ({ticket}) => {
   return (
     <Link to={`/ticket/${ticket.ticketID}`}>
-        <div className='border rounded-lg p-4 shadow hover:shadow-lg transition'>
+        <div className='border rounded-lg p-4 bg-white shadow hover:shadow-lg transition'>
             <div className='flex justify-between'>
                 <h3 className='font-bold'>
                     {ticket.ticketID}

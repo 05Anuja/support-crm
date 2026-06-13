@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteTicket, getTicket, updateTicket } from "../services/ticketService";
+import { toast } from "react-toastify";
 
 const TicketDetails = () => {
   const { ticketID } = useParams();
@@ -31,9 +32,7 @@ const TicketDetails = () => {
         status,
         note,
       });
-
-      alert("Ticket Updated Successfully");
-
+      toast.success("Ticket Updated Successfully");
       setNote("");
       navigate("/");
     } catch (error) {
@@ -43,10 +42,13 @@ const TicketDetails = () => {
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this ticket?")
-    if (!confirmDelete) return;
+    if (!confirmDelete) {
+      toast.info("Deletion Cancelled")
+      return;
+    }
     try {
       await deleteTicket(ticketID)
-      alert("Ticket Deleted Successfully!")
+      toast.success("Ticket Deleted Successfully!")
       navigate('/')
     } catch (error) {
       console.log(error)

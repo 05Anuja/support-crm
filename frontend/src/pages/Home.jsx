@@ -35,8 +35,19 @@ const Home = () => {
     );
   }
 
+  const totalTickets = tickets.length
+  const openTickets = tickets.filter(
+    (ticket) => ticket.status === "Open"
+  ).length;
+  const inProgressTickets = tickets.filter(
+    (ticket) => ticket.status === "In Progress"
+  ).length;
+  const closedTickets = tickets.filter(
+    (ticket) => ticket.status === "Closed"
+  ).length;
+
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="min-h-screen bg-gray-200 py-8">
       {/* Header */}
       {/* <div className="max-w-7xl mx-auto px-6 mb-8">
         <h1 className="text-4xl font-bold text-gray-800">
@@ -64,6 +75,44 @@ const Home = () => {
               setStatus={setStatus}
             />
           </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 px-3">
+        <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-purple-600">
+          <h3 className="text-gray-500 text-sm">
+            Total Tickets
+          </h3>
+          <p className="text-3xl font-bold">
+            {totalTickets}
+          </p>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-blue-500">
+          <h3 className="text-gray-500 text-sm">
+            Open Tickets
+          </h3>
+          <p className="text-3xl font-bold">
+            {openTickets}
+          </p>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-yellow-500">
+          <h3 className="text-gray-500 text-sm">
+            In Progress Tickets
+          </h3>
+          <p className="text-3xl font-bold">
+            {inProgressTickets}
+          </p>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-green-500">
+          <h3 className="text-gray-500 text-sm">
+            Closed Tickets
+          </h3>
+          <p className="text-3xl font-bold">
+            {closedTickets}
+          </p>
         </div>
       </div>
 

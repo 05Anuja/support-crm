@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {createTicket} from '../services/ticketService'
+import { toast } from 'react-toastify';
 
 const CreateTicket = () => {
 
@@ -27,11 +28,13 @@ const CreateTicket = () => {
     try {
       setLoading(true)
       await createTicket(formData)
-      alert("Ticket created Successfully!")
+      // alert("Ticket created Successfully!")
+      toast.success("Ticket created successfully!")
       navigate('/')
     } catch (error) {
       console.log(error)
-      alert("Failed to create ticket")
+      // alert("Failed to create ticket")
+      toast.error("Failed to create ticket")
     } finally {
       setLoading(false)
     }
